@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isvari Digital — Design Preview</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { min-height: 100vh; display: grid; place-items: center; padding: 40px 20px; font-family: "Plus Jakarta Sans", system-ui, sans-serif; background: #0f241c; color: #fbf6ea; }
+    main { width: min(880px, 100%); text-align: center; }
+    .mark { width: 34px; color: #e9c98f; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.03em; margin: 18px 0 8px; }
+    p { color: rgba(251,246,234,.7); margin-bottom: 40px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    a { display: block; text-align: left; text-decoration: none; color: inherit; background: #fbf6ea; color: #12392c; border-radius: 22px; padding: 30px; transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+    a:hover { transform: translateY(-6px); }
+    small { font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #c0904a; font-size: .72rem; }
+    h2 { font-size: 1.6rem; margin: 8px 0; letter-spacing: -.02em; }
+    span { color: #66665e; font-size: .95rem; }
+    b { display: inline-block; margin-top: 20px; background: #124b3a; color: #fff; padding: 10px 20px; border-radius: 999px; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="mark" viewBox="64 44 176 244" fill="currentColor" aria-hidden="true"><rect x="72" y="53" width="108" height="17" rx="8.5"/><rect x="98" y="94" width="62" height="190" rx="31"/><circle cx="206" cy="254" r="27"/></svg>
+    <h1>Isvari Digital</h1>
+    <p>Pilih desain website yang ingin dilihat.</p>
+    <div class="grid">
+      <a href="v1/"><small>Desain 1</small><h2>Classic</h2><span>Layout bersih dan editorial, hijau &amp; emas.</span><br /><b>Lihat desain →</b></a>
+      <a href="v2/"><small>Desain 2</small><h2>Bento Grid</h2><span>Kartu bento interaktif dengan grafik dan animasi.</span><br /><b>Lihat desain →</b></a>
+    </div>
+  </main>
+</body>
+</html>
