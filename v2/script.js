@@ -416,6 +416,7 @@ const applyLang = (next) => {
   $$(".pill", pills).forEach((p, i) => (p.innerHTML = pillHTML(i)));
   setImpact(curImpact);
   engageDesc.textContent = engageTxt(curEngage);
+  $("#homePosts").innerHTML = CONTENT.posts.slice(0, 3).map((p) => CR.postCard(p, lang, "")).join("");
   if (statsDone) $$("[data-count]").forEach((el) => {
     const f = statFormat(el);
     el.textContent = f.prefix + fmt(f.to, f.decimals) + f.suffix;

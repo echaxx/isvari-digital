@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Isvari Digital</title>
+  <meta name="description" content="Tips praktis seputar iklan digital, SEO & pencarian AI, media sosial, website, dan otomasi AI dari tim Isvari Digital." />
+  <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body data-page="blog">
+<div class="frame">
+  <header class="topbar" id="top">
+    <a href="../" class="brand" aria-label="Isvari Digital home">
+      <span class="brand__badge"><svg viewBox="64 44 176 244" fill="currentColor" aria-hidden="true"><rect x="72" y="53" width="108" height="17" rx="8.5"/><rect x="98" y="94" width="62" height="190" rx="31"/><circle cx="206" cy="254" r="27"/></svg></span>
+      <span class="brand__name">Isvari <em>Digital</em></span>
+    </a>
+    <nav class="topbar__nav" id="nav">
+      <a href="../#services" data-t="nav.services">Layanan</a>
+      <a href="../studi-kasus/" data-t="nav.cases">Studi Kasus</a>
+      <a href="../blog/" class="active" aria-current="page" data-t="nav.blog">Blog</a>
+      <a href="../#about" data-t="nav.about">Tentang</a>
+      <a href="../#contact" data-t="nav.contact">Kontak</a>
+      <a href="../#contact" class="btn btn--green btn--sm topbar__cta" data-t="nav.cta">Konsultasi Gratis</a>
+    </nav>
+    <div class="lang" id="lang" role="group" aria-label="Language / Bahasa"><button type="button" data-lang="id" aria-pressed="true">ID</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+    <button class="burger" id="burger" aria-label="Buka menu" data-t-aria="ar.burger" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <section class="section phead">
+    <div class="phead__text reveal">
+      <p class="kicker" data-t="blog.kicker">Blog Isvari</p>
+      <h1 class="h2 phead__title" data-t="blog.h1">Wawasan untuk <span class="light">tumbuh lebih cepat.</span></h1>
+      <p class="lead" data-t="blog.lead">Tips praktis seputar iklan digital, SEO & pencarian AI, media sosial, website, dan otomasi AI dari tim Isvari.</p>
+    </div>
+    <div class="ptools reveal">
+      <div class="filters" id="cats"></div>
+      <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input type="search" id="q" placeholder="Cari artikel..." data-t-ph="blog.search" aria-label="Cari artikel..." data-t-aria="blog.search" /></label>
+    </div>
+  </section>
+  <section class="section plist">
+    <div id="featured"></div>
+    <div class="pgrid" id="postGrid"></div>
+    <p class="empty" id="empty" hidden data-t="blog.empty">Belum ada artikel yang cocok. Coba kata kunci lain.</p>
+  </section>
+
+  <section class="pcta">
+    <div class="pcta__card reveal">
+      <span class="pcta__mark" aria-hidden="true"><svg viewBox="64 44 176 244" fill="currentColor" aria-hidden="true"><rect x="72" y="53" width="108" height="17" rx="8.5"/><rect x="98" y="94" width="62" height="190" rx="31"/><circle cx="206" cy="254" r="27"/></svg></span>
+      <h2 data-t="cta.h">Siap menumbuhkan brand Anda?</h2>
+      <p data-t="cta.p">Konsultasi gratis dengan tim Isvari, respons cepat setiap hari.</p>
+      <a href="../#contact" class="btn btn--gold" data-t="cta.btn">Konsultasi Gratis</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="../" class="brand">
+      <span class="brand__badge"><svg viewBox="64 44 176 244" fill="currentColor" aria-hidden="true"><rect x="72" y="53" width="108" height="17" rx="8.5"/><rect x="98" y="94" width="62" height="190" rx="31"/><circle cx="206" cy="254" r="27"/></svg></span>
+      <span class="brand__name">Isvari <em>Digital</em></span>
+    </a>
+    <p>&copy; <span id="year"></span> Isvari Digital · <span data-t="footer.tag">Partner pertumbuhan digital yang dipimpin perempuan</span></p>
+    <a href="#top" class="totop" aria-label="Kembali ke atas" data-t-aria="ar.top">↑</a>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../content.js"></script>
+<script src="../site.js"></script>
+</body>
+</html>

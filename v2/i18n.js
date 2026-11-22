@@ -84,7 +84,14 @@ const I18N_ID = {
   "marquee.more": "&amp; banyak lagi",
   "form.name": "Nama",
   "form.goals": "Ceritakan target Anda",
-  "footer.tag": "Partner pertumbuhan digital yang dipimpin perempuan"
+  "footer.tag": "Partner pertumbuhan digital yang dipimpin perempuan",
+  "nav.cases": "Studi Kasus",
+  "nav.blog": "Blog",
+  "rc.more": "Baca studi kasus →",
+  "res.all": "Lihat semua studi kasus",
+  "bh.kicker": "Dari blog",
+  "bh.h2": "Wawasan <span class=\"light\">terbaru.</span>",
+  "bh.all": "Lihat semua artikel"
  },
  "ph": {
   "ph.name": "Nama Anda",

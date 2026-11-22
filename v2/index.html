@@ -24,7 +24,8 @@
     </a>
     <nav class="topbar__nav" id="nav">
       <a href="#services" data-i18n="nav.services">Services</a>
-      <a href="#results" data-i18n="nav.results">Results</a>
+      <a href="studi-kasus/" data-i18n="nav.cases">Case Studies</a>
+      <a href="blog/" data-i18n="nav.blog">Blog</a>
       <a href="#about" data-i18n="nav.about">About</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
       <a href="#contact" class="btn btn--green btn--sm topbar__cta" data-i18n="nav.cta">Free Consultation</a>
@@ -67,7 +68,7 @@
           <p class="story__head"><b id="storyTitle">5.34M impressions, 62k clicks</b><span id="storyTag">Healthcare · Medical Lab</span></p>
           <p class="story__desc" id="storyDesc">Built an organic foundation that turned the clinic into a top AI-recommended source for health queries in 6 months.</p>
           <div class="story__cta">
-            <a href="#results" class="btn btn--dark btn--xs" data-i18n="story.all">See all results</a>
+            <a href="studi-kasus/" class="btn btn--dark btn--xs" data-i18n="story.all">See all results</a>
             <a href="#contact" class="btn btn--green btn--xs" data-i18n="story.similar">Get similar results</a>
           </div>
         </div>
@@ -192,27 +193,52 @@
         <span class="rcard__tag" data-i18n="rc1.tag">Healthcare · Medical Lab</span>
         <h3 data-i18n="rc1.h">5.34M impressions, 62k clicks</h3>
         <p data-i18n="rc1.p">Built an organic foundation that turned the clinic into a top AI-recommended source for health queries in 6 months.</p>
-        <span class="rcard__chip">SEO · AEO · GEO</span>
+        <div class="rcard__foot">
+          <span class="rcard__chip">SEO · AEO · GEO</span>
+          <a class="rcard__link" href="studi-kasus/detail.html?c=laboratorium-medis" data-i18n="rc.more">Read case study →</a>
+        </div>
       </article>
       <article class="rcard rcard--dark reveal" data-cat="paid">
         <span class="rcard__tag">Business Coaching</span>
         <h3 data-i18n="rc2.h">7,000+ leads, CPA cut ~51%</h3>
         <p data-i18n="rc2.p">Segmented acquisition across Rp 2.5B in managed Meta spend while steadily lowering cost per registrant.</p>
-        <span class="rcard__chip">Meta Ads</span>
+        <div class="rcard__foot">
+          <span class="rcard__chip">Meta Ads</span>
+          <a class="rcard__link" href="studi-kasus/detail.html?c=business-coaching" data-i18n="rc.more">Read case study →</a>
+        </div>
       </article>
       <article class="rcard rcard--green reveal" data-cat="social paid">
         <span class="rcard__tag" data-i18n="rc3.tag">Mom &amp; Baby Skincare</span>
         <h3 data-i18n="rc3.h">~6x peak ROAS</h3>
         <p data-i18n="rc3.p">Scaled TikTok Ads as a new sales channel through the Ramadan–Lebaran peak with 2,500+ products sold.</p>
-        <span class="rcard__chip">TikTok Ads</span>
+        <div class="rcard__foot">
+          <span class="rcard__chip">TikTok Ads</span>
+          <a class="rcard__link" href="studi-kasus/detail.html?c=skincare-ibu-bayi" data-i18n="rc.more">Read case study →</a>
+        </div>
       </article>
       <article class="rcard reveal" data-cat="paid">
         <span class="rcard__tag" data-i18n="rc4.tag">Automotive Marketplace</span>
         <h3 data-i18n="rc4.h">Rp 1.2B managed, 40–50% QLR</h3>
         <p data-i18n="rc4.p">Built a dual B2B/B2C acquisition model across Meta &amp; Google, balancing vehicle demand and supply.</p>
-        <span class="rcard__chip">Meta &amp; Google Ads</span>
+        <div class="rcard__foot">
+          <span class="rcard__chip">Meta &amp; Google Ads</span>
+          <a class="rcard__link" href="studi-kasus/detail.html?c=marketplace-otomotif" data-i18n="rc.more">Read case study →</a>
+        </div>
       </article>
     </div>
+    <div class="results__more reveal"><a href="studi-kasus/" class="btn btn--dark" data-i18n="res.all">See all case studies</a></div>
+  </section>
+
+  <!-- Blog teaser -->
+  <section class="section bloghome" id="blog">
+    <div class="results__head reveal">
+      <div>
+        <p class="kicker" data-i18n="bh.kicker">From the blog</p>
+        <h2 class="h2" data-i18n="bh.h2">Latest <span class="light">insights.</span></h2>
+      </div>
+      <a href="blog/" class="btn btn--dark btn--sm" data-i18n="bh.all">See all articles</a>
+    </div>
+    <div class="pgrid pgrid--3" id="homePosts"></div>
   </section>
 
   <!-- About / Why -->
@@ -304,6 +330,7 @@
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="content.js"></script>
 <script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
