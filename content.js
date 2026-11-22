@@ -22,7 +22,7 @@ const CONTENT = {
 
   cases: [
     {
-      slug: "laboratorium-medis",
+      slug: "laboratorium-medis", img: "d10",
       cats: ["seo"],
       g: "linear-gradient(150deg,#2a8466,#0d3a2b)",
       icon: "health",
@@ -54,7 +54,7 @@ const CONTENT = {
       },
     },
     {
-      slug: "business-coaching",
+      slug: "business-coaching", img: "d03",
       cats: ["paid"],
       g: "linear-gradient(150deg,#3a3d37,#111310)",
       icon: "target",
@@ -86,7 +86,7 @@ const CONTENT = {
       },
     },
     {
-      slug: "skincare-ibu-bayi",
+      slug: "skincare-ibu-bayi", img: "d01",
       cats: ["paid", "social"],
       g: "linear-gradient(150deg,#ddb06f,#a8742f)",
       icon: "drop",
@@ -118,7 +118,7 @@ const CONTENT = {
       },
     },
     {
-      slug: "marketplace-otomotif",
+      slug: "marketplace-otomotif", img: "d02",
       cats: ["paid"],
       g: "linear-gradient(150deg,#86a995,#3d6b57)",
       icon: "car",
@@ -149,11 +149,51 @@ const CONTENT = {
         en: ["Rp 1.2B in ad spend managed", "40–50% qualified lead rate", "A balanced dual B2B/B2C acquisition model"],
       },
     },
+    {
+      // DUMMY: ganti dengan studi kasus asli
+      slug: "contoh-studi-kasus-1", img: "d06",
+      cats: ["social"],
+      icon: "target",
+      chart: { bars: [18, 26, 34, 42, 52, 62] },
+      industry: { id: "Industri contoh", en: "Sample industry" },
+      title: { id: "Judul studi kasus dummy: brand fashion lokal", en: "Dummy case study: local fashion brand" },
+      summary: { id: "Ringkasan studi kasus dummy. Ganti dengan cerita proyek asli.", en: "Dummy case-study summary. Replace it with the real project story." },
+      services: ["Social Media"],
+      duration: { id: "3 bulan", en: "3 months" },
+      metrics: [
+        { v: "00%", l: { id: "Metrik contoh 1", en: "Sample metric 1" } },
+        { v: "00x", l: { id: "Metrik contoh 2", en: "Sample metric 2" } },
+        { v: "000", l: { id: "Metrik contoh 3", en: "Sample metric 3" } },
+      ],
+      challenge: { id: "Tuliskan tantangan klien di sini.", en: "Describe the client's challenge here." },
+      strategy: { id: ["Langkah strategi contoh 1", "Langkah strategi contoh 2", "Langkah strategi contoh 3"], en: ["Sample strategy step 1", "Sample strategy step 2", "Sample strategy step 3"] },
+      results: { id: ["Hasil contoh 1", "Hasil contoh 2"], en: ["Sample result 1", "Sample result 2"] },
+    },
+    {
+      // DUMMY: ganti dengan studi kasus asli
+      slug: "contoh-studi-kasus-2", img: "d07",
+      cats: ["paid"],
+      icon: "drop",
+      chart: { bars: [18, 26, 34, 42, 52, 62] },
+      industry: { id: "Industri contoh", en: "Sample industry" },
+      title: { id: "Judul studi kasus dummy: toko online F&B", en: "Dummy case study: F&B online store" },
+      summary: { id: "Ringkasan studi kasus dummy. Ganti dengan cerita proyek asli.", en: "Dummy case-study summary. Replace it with the real project story." },
+      services: ["Google Ads"],
+      duration: { id: "3 bulan", en: "3 months" },
+      metrics: [
+        { v: "00%", l: { id: "Metrik contoh 1", en: "Sample metric 1" } },
+        { v: "00x", l: { id: "Metrik contoh 2", en: "Sample metric 2" } },
+        { v: "000", l: { id: "Metrik contoh 3", en: "Sample metric 3" } },
+      ],
+      challenge: { id: "Tuliskan tantangan klien di sini.", en: "Describe the client's challenge here." },
+      strategy: { id: ["Langkah strategi contoh 1", "Langkah strategi contoh 2", "Langkah strategi contoh 3"], en: ["Sample strategy step 1", "Sample strategy step 2", "Sample strategy step 3"] },
+      results: { id: ["Hasil contoh 1", "Hasil contoh 2"], en: ["Sample result 1", "Sample result 2"] },
+    },
   ],
 
   posts: [
     {
-      slug: "apa-itu-aeo-geo",
+      slug: "apa-itu-aeo-geo", img: "d09",
       cat: "seo",
       date: "2026-11-10",
       mins: 6,
@@ -183,7 +223,7 @@ const CONTENT = {
       },
     },
     {
-      slug: "turunkan-cpa-meta-ads",
+      slug: "turunkan-cpa-meta-ads", img: "d06",
       cat: "paid",
       date: "2026-10-28",
       mins: 5,
@@ -211,7 +251,7 @@ const CONTENT = {
       },
     },
     {
-      slug: "tiktok-ads-ramadan",
+      slug: "tiktok-ads-ramadan", img: "d04",
       cat: "social",
       date: "2026-10-14",
       mins: 5,
@@ -235,7 +275,7 @@ const CONTENT = {
       },
     },
     {
-      slug: "elemen-landing-page",
+      slug: "elemen-landing-page", img: "d11",
       cat: "web",
       date: "2026-09-30",
       mins: 4,
@@ -255,7 +295,7 @@ const CONTENT = {
       },
     },
     {
-      slug: "agen-ai-whatsapp",
+      slug: "agen-ai-whatsapp", img: "d12",
       cat: "web",
       date: "2026-09-16",
       mins: 4,
@@ -275,6 +315,58 @@ const CONTENT = {
 <h2>Signs you need an AI agent</h2><ul><li>The same questions repeat every day (pricing, schedules, location).</li><li>Chats outside business hours go unanswered.</li><li>Your team spends hours copying data into other systems.</li></ul>
 <h2>What can an AI agent do?</h2><p>An AI agent can answer common questions based on your business documents (RAG technology), record customer details, and hand important conversations to your human team.</p>
 <h2>Start small</h2><p>Pick the single most frequent flow, automate it, and measure the results. Once it works well, expand to other flows with automations such as n8n.</p>`,
+      },
+    },
+    {
+      // DUMMY: ganti dengan artikel asli
+      slug: "contoh-artikel-1", img: "d07",
+      cat: "paid",
+      date: "2026-09-24",
+      mins: 4,
+      title: { id: "Judul dummy: memilih platform iklan untuk brand baru", en: "Dummy title: choosing an ad platform for a new brand" },
+      excerpt: { id: "Ringkasan artikel dummy. Ganti dengan ringkasan artikel asli.", en: "Dummy article summary. Replace it with the real summary." },
+      body: {
+        id: `<p>Ini adalah artikel dummy sebagai contoh tata letak. Ganti teks ini dengan isi artikel asli.</p><h2>Subjudul contoh</h2><p>Paragraf contoh untuk menunjukkan tampilan teks panjang di halaman artikel. Tambahkan poin, data, dan contoh nyata di sini.</p><blockquote>“Kutipan contoh: tuliskan insight utama artikel di sini agar mudah diingat pembaca.”</blockquote><h2>Subjudul contoh kedua</h2><ul><li>Poin contoh pertama</li><li>Poin contoh kedua</li><li>Poin contoh ketiga</li></ul>`,
+        en: `<p>This is a dummy article used as a layout example. Replace this text with the real article.</p><h2>Sample subheading</h2><p>Sample paragraph showing how long-form text looks on the article page. Add points, data, and real examples here.</p><blockquote>“Sample quote: write the article's key insight here so readers remember it.”</blockquote><h2>Second sample subheading</h2><ul><li>First sample point</li><li>Second sample point</li><li>Third sample point</li></ul>`,
+      },
+    },
+    {
+      // DUMMY: ganti dengan artikel asli
+      slug: "contoh-artikel-2", img: "d08",
+      cat: "seo",
+      date: "2026-09-12",
+      mins: 4,
+      title: { id: "Judul dummy: riset kata kunci untuk bisnis lokal", en: "Dummy title: keyword research for local businesses" },
+      excerpt: { id: "Ringkasan artikel dummy. Ganti dengan ringkasan artikel asli.", en: "Dummy article summary. Replace it with the real summary." },
+      body: {
+        id: `<p>Ini adalah artikel dummy sebagai contoh tata letak. Ganti teks ini dengan isi artikel asli.</p><h2>Subjudul contoh</h2><p>Paragraf contoh untuk menunjukkan tampilan teks panjang di halaman artikel. Tambahkan poin, data, dan contoh nyata di sini.</p><blockquote>“Kutipan contoh: tuliskan insight utama artikel di sini agar mudah diingat pembaca.”</blockquote><h2>Subjudul contoh kedua</h2><ul><li>Poin contoh pertama</li><li>Poin contoh kedua</li><li>Poin contoh ketiga</li></ul>`,
+        en: `<p>This is a dummy article used as a layout example. Replace this text with the real article.</p><h2>Sample subheading</h2><p>Sample paragraph showing how long-form text looks on the article page. Add points, data, and real examples here.</p><blockquote>“Sample quote: write the article's key insight here so readers remember it.”</blockquote><h2>Second sample subheading</h2><ul><li>First sample point</li><li>Second sample point</li><li>Third sample point</li></ul>`,
+      },
+    },
+    {
+      // DUMMY: ganti dengan artikel asli
+      slug: "contoh-artikel-3", img: "d05",
+      cat: "social",
+      date: "2026-08-30",
+      mins: 4,
+      title: { id: "Judul dummy: kalender konten 30 hari", en: "Dummy title: a 30-day content calendar" },
+      excerpt: { id: "Ringkasan artikel dummy. Ganti dengan ringkasan artikel asli.", en: "Dummy article summary. Replace it with the real summary." },
+      body: {
+        id: `<p>Ini adalah artikel dummy sebagai contoh tata letak. Ganti teks ini dengan isi artikel asli.</p><h2>Subjudul contoh</h2><p>Paragraf contoh untuk menunjukkan tampilan teks panjang di halaman artikel. Tambahkan poin, data, dan contoh nyata di sini.</p><blockquote>“Kutipan contoh: tuliskan insight utama artikel di sini agar mudah diingat pembaca.”</blockquote><h2>Subjudul contoh kedua</h2><ul><li>Poin contoh pertama</li><li>Poin contoh kedua</li><li>Poin contoh ketiga</li></ul>`,
+        en: `<p>This is a dummy article used as a layout example. Replace this text with the real article.</p><h2>Sample subheading</h2><p>Sample paragraph showing how long-form text looks on the article page. Add points, data, and real examples here.</p><blockquote>“Sample quote: write the article's key insight here so readers remember it.”</blockquote><h2>Second sample subheading</h2><ul><li>First sample point</li><li>Second sample point</li><li>Third sample point</li></ul>`,
+      },
+    },
+    {
+      // DUMMY: ganti dengan artikel asli
+      slug: "contoh-artikel-4", img: "d02",
+      cat: "web",
+      date: "2026-08-18",
+      mins: 4,
+      title: { id: "Judul dummy: website cepat yang ramah mesin pencari", en: "Dummy title: fast, search-friendly websites" },
+      excerpt: { id: "Ringkasan artikel dummy. Ganti dengan ringkasan artikel asli.", en: "Dummy article summary. Replace it with the real summary." },
+      body: {
+        id: `<p>Ini adalah artikel dummy sebagai contoh tata letak. Ganti teks ini dengan isi artikel asli.</p><h2>Subjudul contoh</h2><p>Paragraf contoh untuk menunjukkan tampilan teks panjang di halaman artikel. Tambahkan poin, data, dan contoh nyata di sini.</p><blockquote>“Kutipan contoh: tuliskan insight utama artikel di sini agar mudah diingat pembaca.”</blockquote><h2>Subjudul contoh kedua</h2><ul><li>Poin contoh pertama</li><li>Poin contoh kedua</li><li>Poin contoh ketiga</li></ul>`,
+        en: `<p>This is a dummy article used as a layout example. Replace this text with the real article.</p><h2>Sample subheading</h2><p>Sample paragraph showing how long-form text looks on the article page. Add points, data, and real examples here.</p><blockquote>“Sample quote: write the article's key insight here so readers remember it.”</blockquote><h2>Second sample subheading</h2><ul><li>First sample point</li><li>Second sample point</li><li>Third sample point</li></ul>`,
       },
     },
   ],
@@ -297,39 +389,23 @@ const CR = {
       .join("")}</svg>`;
   },
   postIcon: (p) => C_ICONS[p.icon || p.cat],
-  postCard(p, lang, base, featured) {
-    const t = (o) => CR.t(o, lang), L = CR.L[lang];
-    return `<a class="pcard${featured ? " pcard--featured" : ""}" href="${base}blog/post.html?p=${p.slug}">
-      <div class="pcard__cover" style="background:${p.g}">
-        <span class="pcard__mark">${CR.logo}</span>
-        <span class="visual__ico pcard__ico">${CR.postIcon(p)}</span>
-        <span class="pcard__cat">${featured ? L.featured + " · " : ""}${t(CONTENT.cats[p.cat])}</span>
-      </div>
-      <div class="pcard__body">
-        <p class="pcard__meta">${CR.date(p.date, lang)} · ${p.mins} ${L.min}</p>
-        <h3>${t(p.title)}</h3>
-        <p class="pcard__ex">${t(p.excerpt)}</p>
-        <span class="pcard__more">${L.read} <i>→</i></span>
-      </div>
+  img: (o, base) => `${base}assets/img/${o.img || "d01"}.jpg`,
+  postCard(p, lang, base) {
+    const t = (o) => CR.t(o, lang);
+    return `<a class="pcard" href="${base}blog/post.html?p=${p.slug}">
+      <div class="pcard__img"><img src="${CR.img(p, base)}" alt="" loading="lazy" /></div>
+      <p class="pcard__cat">${t(CONTENT.cats[p.cat])}</p>
+      <h3>${t(p.title)}</h3>
+      <p class="pcard__date">${CR.date(p.date, lang)} · ${p.mins} ${CR.L[lang].min}</p>
     </a>`;
   },
   caseCard(c, lang, base) {
-    const t = (o) => CR.t(o, lang), L = CR.L[lang];
-    return `<a class="ccard" href="${base}studi-kasus/detail.html?c=${c.slug}">
-      <div class="ccard__visual" style="background:${c.g}">
-        <span class="pcard__mark">${CR.logo}</span>
-        <span class="visual__ico">${C_ICONS[c.icon]}</span>
-        <b class="ccard__big">${t(c.metrics[0].v)}</b>
-        <span class="ccard__unit">${t(c.metrics[0].l)}</span>
-        ${CR.chart(c.chart)}
-      </div>
-      <div class="ccard__body">
-        <span class="rcard__tag">${t(c.industry)}</span>
-        <h3>${t(c.title)}</h3>
-        <p>${t(c.summary)}</p>
-        <div class="tags">${c.services.map((s) => `<span>${s}</span>`).join("")}</div>
-        <span class="pcard__more">${L.readCase} <i>→</i></span>
-      </div>
+    const t = (o) => CR.t(o, lang);
+    return `<a class="pcard" href="${base}studi-kasus/detail.html?c=${c.slug}">
+      <div class="pcard__img"><img src="${CR.img(c, base)}" alt="" loading="lazy" /><b class="pcard__badge">${t(c.metrics[0].v)}</b></div>
+      <p class="pcard__cat">${t(c.industry)}</p>
+      <h3>${t(c.title)}</h3>
+      <p class="pcard__date">${c.services.join(", ")} · ${t(c.duration)}</p>
     </a>`;
   },
 };

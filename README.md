@@ -1,11 +1,15 @@
 # Isvari Digital
 
-Website company profile Isvari Digital (HTML/CSS/JS statis).
+Website Isvari Digital (HTML/CSS/JS statis), bahasa Indonesia + English.
 
-- `v1/` — Desain 1 (Classic)
-- `v2/` — Desain 2 (Bento Grid), website lengkap ID/EN: beranda, `blog/`, `studi-kasus/`
-  - Isi artikel & studi kasus: `v2/content.js`
-  - Teks Indonesia beranda: `v2/i18n.js`
-- `index.html` — halaman pilihan desain
+Live: https://echaxx.github.io/isvari-digital/
+
+- `index.html` — beranda
+- `blog/` — daftar artikel (`index.html`) dan halaman artikel (`post.html?p=slug`)
+- `studi-kasus/` — daftar studi kasus (`index.html`) dan detail (`detail.html?c=slug`)
+- `content.js` — isi artikel & studi kasus (entri bertanda `DUMMY` masih contoh)
+- `assets/img/` — gambar dummy (abstrak, tanpa foto manusia)
+- `i18n.js` — teks Indonesia beranda
+- `v1/`, `v2/` — pengalihan otomatis dari link lama
 
 Buka `index.html` dengan Live Server untuk preview lokal.

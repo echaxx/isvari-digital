@@ -77,8 +77,8 @@ const SITE = {
   "Link copied!"
  ],
  "post.related": [
-  "Artikel terkait",
-  "Related articles"
+  "Baca artikel lainnya",
+  "Read more articles"
  ],
  "post.notfound": [
   "Artikel tidak ditemukan.",
@@ -270,9 +270,7 @@ const pages = {
       const list = posts.filter(
         (p) => (cat === "all" || p.cat === cat) && (!q || `${tr(p.title)} ${tr(p.excerpt)} ${tr(CONTENT.cats[p.cat])}`.toLowerCase().includes(q))
       );
-      const feat = cat === "all" && !q && list.length > 0;
-      $("#featured").innerHTML = feat ? CR.postCard(list[0], lang, "../", true) : "";
-      $("#postGrid").innerHTML = (feat ? list.slice(1) : list).map((p) => CR.postCard(p, lang, "../")).join("");
+      $("#postGrid").innerHTML = list.map((p) => CR.postCard(p, lang, "../")).join("");
       $("#empty").hidden = list.length > 0;
       document.title = tt("blog.title");
     };
@@ -311,11 +309,7 @@ const pages = {
           <h1 class="atitle">${tr(p.title)}</h1>
           <p class="ameta">${CR.date(p.date, lang)} · ${p.mins} ${CR.L[lang].min} · Isvari Digital</p>
         </header>
-        <div class="acover" style="background:${p.g}">
-          <span class="acover__mark">${CR.logo}</span>
-          <span class="acover__ico">${CR.postIcon(p)}</span>
-          <span class="orb orb--1"></span><span class="orb orb--2"></span>
-        </div>
+        <div class="acover"><img src="${CR.img(p, "../")}" alt="" /></div>
         <div class="alayout">
           <aside class="ashare">
             <span>${tt("post.share")}</span>
@@ -394,9 +388,8 @@ const pages = {
               <div><dt>${tt("case.duration")}</dt><dd>${tr(c.duration)}</dd></div>
             </dl>
           </div>
-          <div class="chero__visual" style="background:${c.g}">
-            <span class="pcard__mark">${CR.logo}</span>
-            <span class="visual__ico">${C_ICONS[c.icon]}</span>
+          <div class="chero__visual">
+            <img src="${CR.img(c, "../")}" alt="" />
             <b class="ccard__big">${tr(c.metrics[0].v)}</b>
             <span class="ccard__unit">${tr(c.metrics[0].l)}</span>
             ${CR.chart(c.chart)}
