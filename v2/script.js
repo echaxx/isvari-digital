@@ -2,6 +2,16 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* Language (Indonesian default, English second) */
+const ID = I18N_ID;
+const LANGS = ["id", "en"];
+let lang = new URLSearchParams(location.search).get("lang") || localStorage.getItem("isvari-lang") || "id";
+if (!LANGS.includes(lang)) lang = "id";
+const EN_MSG = { saved: "\u2665 Saved: ", removed: "Removed from saved results", show: "Show result: ", err: "Please enter your name and a valid email.", subject: "Free consultation: ", name: "Name", service: "Service" };
+const pick = (en, key, i) => (lang === "id" ? { ...en, ...ID[key][i] } : en);
+const msg = (k) => (lang === "id" ? ID.msg : EN_MSG)[k];
+const fmt = (n, d = 0) => n.toLocaleString(lang === "id" ? "id-ID" : "en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+
 /* Toast */
 const toast = $("#toast");
 let toastTimer;
@@ -50,7 +60,7 @@ if (!reduceMotion) {
     rotator.classList.add("out");
     setTimeout(() => {
       rotIndex = (rotIndex + 1) % rotatorWords.length;
-      rotator.textContent = rotatorWords[rotIndex];
+      rotator.textContent = (lang === "id" ? ID.rotator : rotatorWords)[rotIndex];
       rotator.classList.remove("out");
       rotator.classList.add("in");
       requestAnimationFrame(() => requestAnimationFrame(() => rotator.classList.remove("in")));
@@ -95,13 +105,14 @@ const renderVisual = (s) => {
 
 const renderStrips = () => {
   strips.innerHTML = "";
-  stories.forEach((s, i) => {
+  stories.forEach((st, i) => {
     if (i === current) return;
+    const s = pick(st, "stories", i);
     const b = document.createElement("button");
     b.className = "strip";
     b.style.setProperty("--g", s.g);
     b.dataset.label = s.tag.split(" · ")[0];
-    b.setAttribute("aria-label", `Show result: ${s.tag}`);
+    b.setAttribute("aria-label", `${msg("show")}${s.tag}`);
     b.innerHTML = `<span class="strip__ico">${ICONS[s.icon]}</span><span class="strip__num">${s.big}</span>`;
     b.addEventListener("click", () => showStory(i));
     strips.appendChild(b);
@@ -110,7 +121,7 @@ const renderStrips = () => {
 
 const showStory = (i) => {
   current = i;
-  const s = stories[i];
+  const s = pick(stories[i], "stories", i);
   visual.classList.add("fade");
   storyBody.classList.add("fade");
   setTimeout(() => {
@@ -133,9 +144,9 @@ heart.addEventListener("click", () => {
   heart.classList.remove("pop");
   void heart.offsetWidth;
   heart.classList.add("pop");
-  showToast(isLiked ? `♥ Saved: ${stories[current].tag}` : "Removed from saved results");
+  showToast(isLiked ? `${msg("saved")}${pick(stories[current], "stories", current).tag}` : msg("removed"));
 });
-renderVisual(stories[0]);
+renderVisual(pick(stories[0], "stories", 0));
 renderStrips();
 
 /* Word slider */
@@ -168,8 +179,9 @@ const goSlide = (i) => {
   sliderWord.classList.add("out");
   sliderSub.style.opacity = 0;
   setTimeout(() => {
-    sliderWord.textContent = slides[i].word;
-    sliderSub.textContent = slides[i].sub;
+    const sl = pick(slides[i], "slides", i);
+    sliderWord.textContent = sl.word;
+    sliderSub.textContent = sl.sub;
     sliderWord.classList.remove("out");
     sliderSub.style.opacity = 1;
   }, 300);
@@ -187,14 +199,14 @@ restartSlider();
 /* Count-up helper */
 const countUp = (el, { to, prefix = "", suffix = "", decimals = 0, duration = 1200 }) => {
   if (reduceMotion) {
-    el.textContent = prefix + to.toFixed(decimals) + suffix;
+    el.textContent = prefix + fmt(to, decimals) + suffix;
     return;
   }
   const start = performance.now();
   const step = (now) => {
     const p = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = prefix + (to * eased).toFixed(decimals) + suffix;
+    el.textContent = prefix + fmt(to * eased, decimals) + suffix;
     if (p < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
@@ -215,8 +227,10 @@ const impacts = [
 ];
 const pills = $("#pills");
 const impactNum = $("#impactNum");
+let curImpact = 0;
 const setImpact = (i) => {
-  const d = impacts[i];
+  curImpact = i;
+  const d = pick(impacts[i], "impacts", i);
   $$(".pill", pills).forEach((p, j) => {
     p.classList.toggle("active", j === i);
     p.setAttribute("aria-selected", j === i);
@@ -225,11 +239,15 @@ const setImpact = (i) => {
   $("#impactCap").textContent = d.cap;
   countUp(impactNum, { to: d.to, prefix: d.prefix, suffix: d.suffix, duration: 900 });
 };
+const pillHTML = (i) => {
+  const d = pick(impacts[i], "impacts", i);
+  return `<span class="pill__ico">${icons[d.icon]}</span>${d.name}<span class="pill__desc">${d.desc}</span>`;
+};
 impacts.forEach((d, i) => {
   const b = document.createElement("button");
   b.className = "pill";
   b.setAttribute("role", "tab");
-  b.innerHTML = `<span class="pill__ico">${icons[d.icon]}</span>${d.name}<span class="pill__desc">${d.desc}</span>`;
+  b.innerHTML = pillHTML(i);
   b.addEventListener("click", () => setImpact(i));
   pills.appendChild(b);
 });
@@ -269,13 +287,16 @@ const engageText = [
   "An expert review of your current campaigns, website, or search visibility, plus a prioritized action plan.",
 ];
 const engageDesc = $("#engageDesc");
-engageDesc.textContent = engageText[0];
+let curEngage = 0;
+const engageTxt = (i) => (lang === "id" ? ID.engage : engageText)[i];
+engageDesc.textContent = engageTxt(0);
 $$(".etab").forEach((t) =>
   t.addEventListener("click", () => {
     $$(".etab").forEach((x) => x.classList.toggle("active", x === t));
     engageDesc.style.opacity = 0;
     setTimeout(() => {
-      engageDesc.textContent = engageText[t.dataset.i];
+      curEngage = +t.dataset.i;
+      engageDesc.textContent = engageTxt(curEngage);
       engageDesc.style.opacity = 1;
     }, 200);
   })
@@ -298,12 +319,13 @@ form.addEventListener("submit", (e) => {
   form.name.classList.toggle("invalid", !name);
   form.email.classList.toggle("invalid", !/^\S+@\S+\.\S+$/.test(email));
   if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
-    err.textContent = "Please enter your name and a valid email.";
+    err.textContent = msg("err");
     return;
   }
   err.textContent = "";
-  const subject = encodeURIComponent(`Free consultation: ${service}`);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nService: ${service}\n\n${form.message.value}`);
+  service = $("#choice button.active").textContent;
+  const subject = encodeURIComponent(`${msg("subject")}${service}`);
+  const body = encodeURIComponent(`${msg("name")}: ${name}\nEmail: ${email}\n${msg("service")}: ${service}\n\n${form.message.value}`);
   window.location.href = `mailto:hello@isvari.digital?subject=${subject}&body=${body}`;
   $("#formFields").hidden = true;
   $("#formDone").hidden = false;
@@ -327,19 +349,19 @@ const revealObserver = new IntersectionObserver(
 );
 $$(".reveal").forEach((el) => revealObserver.observe(el));
 
+let statsDone = false;
+const statFormat = (el) => {
+  const en = { to: parseFloat(el.dataset.count), prefix: el.dataset.prefix || "", suffix: el.dataset.suffix || "", decimals: parseInt(el.dataset.decimals || "0", 10) };
+  return lang === "id" ? { ...en, ...ID.stats[el.dataset.stat] } : en;
+};
 const statsObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((e) => {
       if (!e.isIntersecting) return;
       $$("[data-count]", e.target).forEach((el) =>
-        countUp(el, {
-          to: parseFloat(el.dataset.count),
-          prefix: el.dataset.prefix || "",
-          suffix: el.dataset.suffix || "",
-          decimals: parseInt(el.dataset.decimals || "0", 10),
-          duration: 1500,
-        })
+        countUp(el, { ...statFormat(el), duration: 1500 })
       );
+      statsDone = true;
       statsObserver.unobserve(e.target);
     });
   },
@@ -348,3 +370,67 @@ const statsObserver = new IntersectionObserver(
 statsObserver.observe($("#stats"));
 
 $("#year").textContent = new Date().getFullYear();
+
+/* Language switcher */
+const enCache = new Map();
+const cached = (el, attr) => {
+  const k = el.dataset.i18n + (attr || "") + (el.dataset.i18nPh || "") + (el.dataset.i18nAria || "");
+  if (!enCache.has(el)) enCache.set(el, {});
+  const c = enCache.get(el);
+  if (!(k in c)) c[k] = attr ? el.getAttribute(attr) : el.innerHTML;
+  return c[k];
+};
+const enMeta = { title: document.title, desc: $('meta[name="description"]').content };
+
+const applyLang = (next) => {
+  lang = next;
+  localStorage.setItem("isvari-lang", lang);
+  document.documentElement.lang = lang;
+  const isId = lang === "id";
+  $$("[data-i18n]").forEach((el) => {
+    const en = cached(el);
+    el.innerHTML = isId ? ID.text[el.dataset.i18n] : en;
+  });
+  $$("[data-i18n-ph]").forEach((el) => {
+    const en = cached(el, "placeholder");
+    el.setAttribute("placeholder", isId ? ID.ph[el.dataset.i18nPh] : en);
+  });
+  $$("[data-i18n-aria]").forEach((el) => {
+    const en = cached(el, "aria-label");
+    el.setAttribute("aria-label", isId ? ID.aria[el.dataset.i18nAria] : en);
+  });
+  document.title = isId ? ID.meta.title : enMeta.title;
+  $('meta[name="description"]').content = isId ? ID.meta.desc : enMeta.desc;
+
+  rotator.textContent = (isId ? ID.rotator : rotatorWords)[rotIndex];
+  const s = pick(stories[current], "stories", current);
+  renderVisual(s);
+  $("#storyTitle").textContent = s.title;
+  $("#storyTag").textContent = s.tag;
+  $("#storyDesc").textContent = s.desc;
+  renderStrips();
+  const sl = pick(slides[slide], "slides", slide);
+  sliderWord.textContent = sl.word;
+  sliderSub.textContent = sl.sub;
+  $$(".dot", dots).forEach((d, i) => d.setAttribute("aria-label", pick(slides[i], "slides", i).word.replace(".", "")));
+  $$(".pill", pills).forEach((p, i) => (p.innerHTML = pillHTML(i)));
+  setImpact(curImpact);
+  engageDesc.textContent = engageTxt(curEngage);
+  if (statsDone) $$("[data-count]").forEach((el) => {
+    const f = statFormat(el);
+    el.textContent = f.prefix + fmt(f.to, f.decimals) + f.suffix;
+  });
+  $$("#lang button").forEach((b) => {
+    const on = b.dataset.lang === lang;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-pressed", on);
+  });
+};
+$$("#lang button").forEach((b) =>
+  b.addEventListener("click", () => {
+    if (b.dataset.lang === lang) return;
+    applyLang(b.dataset.lang);
+    showToast(lang === "id" ? "Bahasa: Indonesia" : "Language: English");
+  })
+);
+applyLang(lang);
